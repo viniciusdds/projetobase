@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Permissao;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -27,4 +28,12 @@ class AuthServiceProvider extends ServiceProvider
 
         //
     }
+
+    //Retornar todas as permissões que tenho no banco com o seus papeis
+    public function listaPermissoes()
+    {
+        return Permissao::with('papeis')->get();
+
+    }
+
 }
